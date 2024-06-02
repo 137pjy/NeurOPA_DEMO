@@ -1,0 +1,45 @@
+/* #progress-container {
+    width: 300px;
+    height: 30px;
+    background-color: #f3f3f3;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 50px;
+} */
+#progressbar1 {
+    width: 0;
+    height: 100%;
+    background-color: #2d3a4b;
+}
+#progressbar2 {
+    width: 0;
+    height: 100%;
+    background-color: #2d3a4b;
+}
+#info-container {
+    margin-top: 20px;
+    display: none;
+
+}
+
+#image-info {
+    max-width: calc(100vw / 4);
+    height: auto;
+}
+
+/* 수정 */
+.progress-container{
+    display: flex;
+}
+
+.one-progress-container {
+    width: 50%;
+    height: 30px;
+    background-color: #f3f3f3;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 50px;
+}
+

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>RISOPA</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <!-- 2. 데스크탑용 외부 스타일시트 적용 -->
+    <link rel="stylesheet" href="./hello.css" media="(min-width:600px)">
+</head>
+<body>
+    
+    <header>
+        <h1>모델 및 공격 유형 선택</h1>
+    </header>
+
+    <main>
+        <div class="dropdown-container">
+            <label for="model-select">모델 선택:</label>
+            <select id="model-select">
+                <option value="model1">모델 1</option>
+                <option value="model2">모델 2</option>
+                <option value="model3">모델 3</option>
+                <option value="model4">모델 4</option>
+                <option value="model5">모델 5</option>
+            </select>
+        </div>
+
+        <div class="dropdown-container">
+            <label for="attack-type-select">Attack Type 선택:</label>
+            <select id="attack-type-select">
+                <option value="type1">Attack Type 1</option>
+                <option value="type2">Attack Type 2</option>
+                <option value="type3">Attack Type 3</option>
+            </select>
+        </div>
+
+        <div class="image-container"></div>
+        
+        <div class="button-container">
+        <button class="execute-button" id="execute-button" onclick="location.href='progressbar.html'">Progress Bar 보기와 실행</button>
+        </div>
+
+    </main>
+    <script src="script.js"></script>
+
+</body>
+</html>
