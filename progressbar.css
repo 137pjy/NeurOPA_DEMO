@@ -17,14 +17,26 @@
     height: 100%;
     background-color: #2d3a4b;
 }
-#info-container {
-    margin-top: 20px;
-    display: none;
 
+.info-container {
+    display: flex;
+    justify-content: space-between;
 }
 
-#image-info {
-    max-width: calc(100vw / 4);
+.info-container div {
+    width: 48%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+}
+
+#image-info1 {
+    width: 100%;
+    height: auto;
+}
+#image-info2 {
+    width: 100%;
     height: auto;
 }
 

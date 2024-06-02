@@ -37,8 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('execute-button').addEventListener('click', function() {
         const selectedModel = document.getElementById('model-select').value;
         const selectedAttackType = document.getElementById('attack-type-select').value;
-
-        // 이미지 경로를 이곳에서 가져오세요.
         
         // 선택된 값들과 이미지 경로를 progressbar.html 페이지로 전달
         window.location.href = `progressbar.html?model=${selectedModel}&attack=${selectedAttackType}&image=${selectedImage}`;
