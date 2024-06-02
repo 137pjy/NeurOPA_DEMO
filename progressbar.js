@@ -1,7 +1,7 @@
 $(document).ready(function() {
     
     
-    function updateProgressBar(duration, progressBar,num) {
+    function updateProgressBar(duration, progressBar,AttackType,num) {
         var interval = 100; // 업데이트 간격 (100ms)
         var progressValue = 0;
         var increment = (interval / duration) * 100; // 각 업데이트마다 증가할 값
@@ -15,24 +15,19 @@ $(document).ready(function() {
             progressBar.css("width", progressValue + "%");
         }, interval);
     
-        let attacked_img_src='';
+  
 
-        if(num==2){
-            if(selectedAttackType=='SA'){
-                contrastAttackType='Su';
-            }
-            attacked_img_src='images/Attacked_images/'+img_id+'_'+selectedModel+'_'+contrastAttackType+'.png';
-        }   
-        else{
-            attacked_img_src='images/Attacked_images/'+img_id+'_'+selectedModel+'_'+selectedAttackType+'.png';
-        }
+
+        var attacked_img_src='images/Attacked_images/'+img_id+'_'+selectedModel+'_'+AttackType+'.png';
+  
+
     
    
         console.log(attacked_img_src)
         
         // 모델과 공격 유형 출력
         $('#model-info'+num).text(`Selected Model: ${selectedModel}`);
-        $('#attack-info'+num).text(`Selected Attack Type: ${selectedAttackType}`);
+        $('#attack-info'+num).text(`Selected Attack Type: ${AttackType}`);
     
         // 이미지 출력
         $('#image-info'+num).attr('src', attacked_img_src);
@@ -44,7 +39,7 @@ $(document).ready(function() {
         }, duration);
     }
 
-    function extractDuration(img_id,selectedModel,AttackType,num){
+    function extractDuration(img_id,selectedModel,AttackType){
 
         // File path to your CSV file
         const filePath = 'images/Attacked_datas/'+img_id+'_'+selectedModel+'_'+AttackType+'.csv';
@@ -66,14 +61,6 @@ $(document).ready(function() {
                 const result = Math.floor(number * 1000); // Remove the decimal part and multiply by 100
                 console.log(result); // Output: 3649
                 duration=result;
-
-                // if(num==1){
-                //     var progressBar1 = $("#progressbar1");
-                //     updateProgressBar(duration, progressBar1,1);
-                // }else{
-                //     var progressBar2 = $("#progressbar2");
-                //     updateProgressBar(duration, progressBar2,2);
-                // }
                 
             }
         });
@@ -96,24 +83,54 @@ $(document).ready(function() {
     const filenameWithExtension = imagePath.split('/').pop(); // "213.png"
     const img_id = filenameWithExtension.split('.')[0]; // "213"
 
-    let contrastAttackType='Su';
+    
+    let contrastAttackType='';
+    if(selectedAttackType=='SA'){
+        contrastAttackType='Su';
+    }else if(selectedAttackType=='DA'){
+        contrastAttackType='OPA2D';
+    }else{//selectedAttackType='RA'
+        contrastAttackType='none';
+    }
+
+
+    if(selectedAttackType=='SA'){
+        var duration1=extractDuration(img_id,selectedModel,selectedAttackType,1);
+        var duration2=extractDuration(img_id,selectedModel,contrastAttackType,2);
+        
+        var progressBar1 = $("#progressbar1");
+        updateProgressBar(duration1, progressBar1,selectedAttackType,1);
+    
+        var progressBar2 = $("#progressbar2");
+        updateProgressBar(duration2, progressBar2,contrastAttackType,2);
+    }else if(selectedAttackType=='DA'){
+        var duration1=extractDuration(img_id,selectedModel,selectedAttackType,1);
+        var duration2=extractDuration(img_id,selectedModel,contrastAttackType,2);
+        
+        var progressBar1 = $("#progressbar1");
+        updateProgressBar(duration1, progressBar1,selectedAttackType,1);
+    
+        var progressBar2 = $("#progressbar2");
+        updateProgressBar(duration2, progressBar2,contrastAttackType,2);
+    }else{
+        var duration1=extractDuration(img_id,selectedModel,selectedAttackType,1);
+
+        var progressBar1 = $("#progressbar1");
+        updateProgressBar(duration1, progressBar1,selectedAttackType,1);
+    
+
+    }
 
 
 
-    var duration1=extractDuration(img_id,selectedModel,selectedAttackType,1);
-    var duration2=extractDuration(img_id,selectedModel,contrastAttackType,2);
+    // console.log('duration1'+duration1);
+    // console.log('duration2'+duration2);
 
 
-
-    console.log('duration1'+duration1);
-    console.log('duration2'+duration2);
-
-    // 호출 예시:
-    //var duration1 = 2000; // 2초 동안 진행
     var progressBar1 = $("#progressbar1");
     updateProgressBar(duration1, progressBar1,1);
 
-    //var duration2 = 10000; // 2초 동안 진행
+
     var progressBar2 = $("#progressbar2");
     updateProgressBar(duration2, progressBar2,2);
 
