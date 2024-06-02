@@ -40,7 +40,7 @@ $(document).ready(function() {
     
         // progress bar 완료 후에 정보를 표시
         setTimeout(function() {
-            $('#info-container').css('display', 'block');
+            $('#info-container'+num).css('display', 'block');
         }, duration);
     }
 
