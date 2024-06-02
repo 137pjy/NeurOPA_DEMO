@@ -18,39 +18,37 @@ $(document).ready(function() {
   
 
 
-        var attacked_img_src='images/Attacked_images/'+img_id+'_'+selectedModel+'_'+AttackType+'.png';
-  
+        // var attacked_img_src='images/Attacked_images/'+img_id+'_'+selectedModel+'_'+AttackType+'.png';
+        // console.log(attacked_img_src)
+        
+        // // 모델과 공격 유형 출력
+        // $('#model-info'+num).text(`Selected Model: ${selectedModel}`);
+        // $('#attack-info'+num).text(`Selected Attack Type: ${AttackType}`);
+    
+        // // 이미지 출력
+        // $('#image-info'+num).attr('src', attacked_img_src);
+        // console.log(`Image Path for progress bar ${num}: ${attacked_img_src}`);
+
 
     
-   
-        console.log(attacked_img_src)
-        
-        // 모델과 공격 유형 출력
-        $('#model-info'+num).text(`Selected Model: ${selectedModel}`);
-        $('#attack-info'+num).text(`Selected Attack Type: ${AttackType}`);
-    
-        // 이미지 출력
-        $('#image-info'+num).attr('src', attacked_img_src);
-        console.log(`Image Path for progress bar ${num}: ${attacked_img_src}`);
-    
-        // progress bar 완료 후에 정보를 표시
-        setTimeout(function() {
-            $('#info-container'+num).css('display', 'block');
-        }, duration);
+        // // progress bar 완료 후에 정보를 표시
+        // setTimeout(function() {
+        //     $('#info-container'+num).css('display', 'block');
+        // }, duration);
     }
 
-    function extractDuration(img_id,selectedModel,AttackType){
+    function extractDuration(img_id,selectedModel,AttackType,num){
 
         // File path to your CSV file
         const filePath = 'images/Attacked_datas/'+img_id+'_'+selectedModel+'_'+AttackType+'.csv';
-
+        let infoArray=null;
         var duration;
         $.ajax({
             async: false,
             url:filePath,
             dataType:'text',
             success: function(data) {
-                const csvArray =data.split(',');
+                csvArray =data.split(',');
 
                 // Get the last element of the array
                 const lastElement = csvArray[csvArray.length - 1];
@@ -61,13 +59,43 @@ $(document).ready(function() {
                 const result = Math.floor(number * 1000); // Remove the decimal part and multiply by 100
                 console.log(result); // Output: 3649
                 duration=result;
+                infoArray=csvArray;
+
                 
             }
         });
         
+        updateInfo(duration,img_id,selectedModel,AttackType,infoArray,num);
         return duration;
 
        
+    }
+
+    function updateInfo(duration,img_id,selectedModel,AttackType,csvArray,num){
+        // 모델과 공격 유형 출력
+        
+        var attacked_img_src='images/Attacked_images/'+img_id+'_'+selectedModel+'_'+AttackType+'.png';
+        console.log(attacked_img_src)
+        
+        $('#model-info'+num).text(`Selected Model: ${selectedModel}`);
+        $('#attack-info'+num).text(`Selected Attack Type: ${AttackType}`);
+
+        $('#confidence-score-info'+num).text(`Confidence Score: ${csvArray[0]}`);
+        $('#distance-info'+num).text(`Distance: ${csvArray[1]}`);
+        $('#origin-class-info'+num).text(`Origin Class: ${csvArray[2]}`);
+        $('#predicted-class-info'+num).text(`Predicted Class: ${csvArray[3]}`);
+        $('#time-info'+num).text(`Time: ${csvArray[4]}`);
+    
+        // 이미지 출력
+        $('#image-info'+num).attr('src', attacked_img_src);
+        console.log(`Image Path for progress bar ${num}: ${attacked_img_src}`);
+
+
+    
+        // progress bar 완료 후에 정보를 표시
+        setTimeout(function() {
+            $('#info-container'+num).css('display', 'block');
+        }, duration);
     }
 
     // URL 파싱
@@ -117,8 +145,6 @@ $(document).ready(function() {
 
         var progressBar1 = $("#progressbar1");
         updateProgressBar(duration1, progressBar1,selectedAttackType,1);
-    
-
     }
 
 
