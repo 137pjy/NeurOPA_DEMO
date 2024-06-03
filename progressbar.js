@@ -83,15 +83,9 @@ $(document).ready(function() {
     const urlParams = new URLSearchParams(queryString);
     const selectedModel = urlParams.get('model');
     const selectedAttackType = urlParams.get('attack');
-    const selectedImage = urlParams.get('image');
+    const img_id = urlParams.get('image');
     
-    const url = new URL(selectedImage);
-    const imagePath = url.pathname;
 
-    const filenameWithExtension = imagePath.split('/').pop(); // "213.png"
-    const img_id = filenameWithExtension.split('.')[0]; // "213"
-
-    
     let contrastAttackType='';
     if(selectedAttackType=='SA'){
         contrastAttackType='Su';
