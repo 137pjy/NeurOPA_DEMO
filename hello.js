@@ -39,6 +39,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
         }
         imagePaths=[];
+        console.log("Image ID Array:", img_id_arr);
+
+        if (!img_id_arr || img_id_arr.length === 0) {
+            console.error("img_id_arr is undefined or empty");
+            return;
+        }
+
         for (let i = 0; i < img_id_arr.length; i++) {
             imagePaths.push(`images/original_images/${img_id_arr[i]}_${selectedModel}_${selectedAttackType}.png`);
         }
@@ -75,14 +82,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-    document.getElementById('model-select').addEventListener('change', function() {
+    document.getElementById('model-select').addEventListener('click', function() {
         selectedModel = this.value;
         console.log('Selected Model:', selectedModel);
         
         
     });
 
-    document.getElementById('attack-type-select').addEventListener('change', function() {
+    document.getElementById('attack-type-select').addEventListener('click', function() {
         selectedAttackType = this.value;
         console.log('Selected Attack Type:', selectedAttackType);
         addImages();
