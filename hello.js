@@ -1,24 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Variables to store selected values
-    let selectedModel = $('#model-select').val();
-    let selectedAttackType = $('#attack-type-select').val();
+    let selectedModel = '';
+    let selectedAttackType = '';
 
-    // // Event listener for model select
-    // $('#model-select').change(function() {
-    //     selectedModel = $(this).val();
-    //     console.log('Selected Model:', selectedModel);
-    // });
-
-    // // Event listener for attack type select
-    // $('#attack-type-select').change(function() {
-    //     selectedAttackType = $(this).val();
-    //     console.log('Selected Attack Type:', selectedAttackType);
-    // });
+    let modelflag = false;
+    let attackTypeFlag = false;
 
     let img_id_arr;
     let imagePaths=[];
     
     function set_imagePaths(selectedModel,selectedAttackType){
+        
         if(selectedModel=='lenet'){
             if(selectedAttackType=='RA'){
                 img_id_arr=[213,934,1022,1109,1127,1328,1379,1719,1844,2003];
@@ -33,11 +25,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 img_id_arr=[226,817,2108,2246,3966,3972,4562,6095,6989,8444];
             }
 
-        }else if(selectedModel=='net_int_net'){
+        }else if(selectedModel=='net_in_net'){
+            console.log("if문 selectedModel == ",selectedModel);
+            if(selectedAttackType=='RA'){
+                img_id_arr=[277,714,1628,1637,1922,1998,2143,2150,2156,2241];
+            }else if(selectedAttackType=='SA'){
+                img_id_arr=[241,277,1628,1998,2143,2526,3059,3623,3712];
+            }else{//selectedAttackType=='DA'
+                img_id_arr=[277,1628,1998,2143,2526,3059,3476,3712];
+            }
             
         }else{//selectedModel=='wide_resnet'
     
         }
+        
         imagePaths=[];
         console.log("Image ID Array:", img_id_arr);
 
@@ -62,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let selectedImage = '';
     let img_id;
 
-    function addImages() {
+    function addImages(selectedModel,selectedAttackType) {
         set_imagePaths(selectedModel,selectedAttackType);
         const imageContainer = document.querySelector('.image-container');
         imageContainer.innerHTML = ''; // Clear existing images
@@ -78,21 +79,31 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             imageContainer.appendChild(img);
         });
+
     }
 
 
 
-    document.getElementById('model-select').addEventListener('click', function() {
+    document.getElementById('model-select').addEventListener('change', function() {
         selectedModel = this.value;
         console.log('Selected Model:', selectedModel);
+        modelflag=true;
+        if(modelflag&&attackTypeFlag){
+            addImages(selectedModel, selectedAttackType);
+        }
         
+    
         
     });
 
-    document.getElementById('attack-type-select').addEventListener('click', function() {
+    document.getElementById('attack-type-select').addEventListener('change', function() {
         selectedAttackType = this.value;
         console.log('Selected Attack Type:', selectedAttackType);
-        addImages();
+        attackTypeFlag=true;
+        if(modelflag&&attackTypeFlag){
+            addImages(selectedModel, selectedAttackType);
+        }
+        
         
     });
 
