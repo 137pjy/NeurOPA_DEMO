@@ -15,26 +15,6 @@ $(document).ready(function() {
             progressBar.css("width", progressValue + "%");
         }, interval);
     
-  
-
-
-        // var attacked_img_src='images/Attacked_images/'+img_id+'_'+selectedModel+'_'+AttackType+'.png';
-        // console.log(attacked_img_src)
-        
-        // // 모델과 공격 유형 출력
-        // $('#model-info'+num).text(`Selected Model: ${selectedModel}`);
-        // $('#attack-info'+num).text(`Selected Attack Type: ${AttackType}`);
-    
-        // // 이미지 출력
-        // $('#image-info'+num).attr('src', attacked_img_src);
-        // console.log(`Image Path for progress bar ${num}: ${attacked_img_src}`);
-
-
-    
-        // // progress bar 완료 후에 정보를 표시
-        // setTimeout(function() {
-        //     $('#info-container'+num).css('display', 'block');
-        // }, duration);
     }
 
     function extractDuration(img_id,selectedModel,AttackType,num){
@@ -144,7 +124,9 @@ $(document).ready(function() {
         var duration1=extractDuration(img_id,selectedModel,selectedAttackType,1);
 
         var progressBar1 = $("#progressbar1");
+        $('#progressbar2').css('display', 'none'); 
         updateProgressBar(duration1, progressBar1,selectedAttackType,1);
+
     }
 
 
@@ -153,12 +135,12 @@ $(document).ready(function() {
     // console.log('duration2'+duration2);
 
 
-    var progressBar1 = $("#progressbar1");
-    updateProgressBar(duration1, progressBar1,1);
+    // var progressBar1 = $("#progressbar1");
+    // updateProgressBar(duration1, progressBar1,1);
 
 
-    var progressBar2 = $("#progressbar2");
-    updateProgressBar(duration2, progressBar2,2);
+    // var progressBar2 = $("#progressbar2");
+    // updateProgressBar(duration2, progressBar2,2);
 
 
 
