@@ -53,12 +53,22 @@ $(document).ready(function() {
 
     function updateInfo(duration,img_id,selectedModel,AttackType,csvArray,num){
         // 모델과 공격 유형 출력
-        
+
         var attacked_img_src='images/Attacked_images/'+img_id+'_'+selectedModel+'_'+AttackType+'.png';
         console.log(attacked_img_src)
         
         $('#model-info'+num).text(`Selected Model: ${selectedModel}`);
-        $('#attack-info'+num).text(`Selected Attack Type: ${AttackType}`);
+        let AttackTypeDetail;
+        if(AttackType=='SA'){
+            AttackTypeDetail='Score Attack';
+        }else if(AttackType=='SA'){
+            AttackTypeDetail='Distance Attack';
+        }else if(AttackType=='RA'){
+            AttackTypeDetail='Rapid Attack';
+        }else {
+            AttackTypeDetail=AttackType;
+        }
+        $('#attack-info'+num).text(`Selected Attack Type: ${AttackTypeDetail}`);
 
         $('#confidence-score-info'+num).text(`Confidence Score: ${csvArray[0]}`);
         $('#distance-info'+num).text(`Distance: ${csvArray[1]}`);
@@ -118,25 +128,9 @@ $(document).ready(function() {
         var duration1=extractDuration(img_id,selectedModel,selectedAttackType,1);
 
         var progressBar1 = $("#progressbar1");
-        $('#progressbar2').css('display', 'none'); 
+        
         updateProgressBar(duration1, progressBar1,selectedAttackType,1);
 
     }
-
-
-
-    // console.log('duration1'+duration1);
-    // console.log('duration2'+duration2);
-
-
-    // var progressBar1 = $("#progressbar1");
-    // updateProgressBar(duration1, progressBar1,1);
-
-
-    // var progressBar2 = $("#progressbar2");
-    // updateProgressBar(duration2, progressBar2,2);
-
-
-
 
 });
