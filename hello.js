@@ -27,7 +27,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
         }else if(selectedModel=='resnet'){
-    
+            if(selectedAttackType=='RA'){
+                img_id_arr=[226,785,817,1359,1698,2108,2246,2353,2488,3163];
+            }else{
+                img_id_arr=[226,817,2108,2246,3966,3972,4562,6095,6989,8444];
+            }
+
         }else if(selectedModel=='net_int_net'){
             
         }else{//selectedModel=='wide_resnet'
