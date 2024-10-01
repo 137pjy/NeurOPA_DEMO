@@ -1,12 +1,12 @@
 # 💻 데모 프로젝트
 "RISOPA: Rapid Imperceptible Strong One-Pixel Attacks in Deep Neural Networks" 
 논문의 연구 결과를 가시적으로 보여주는 데모 프로젝트입니다.  
-📎 https://137pjy.github.io/NeurOPA_DEMO/  
+📎 Project - https://137pjy.github.io/NeurOPA_DEMO/  
 
 
 
-📜 https://www.mdpi.com/2227-7390/12/7/1083  
-💡 https://github.com/Konkuk-fvlab
+📜 논문 - https://www.mdpi.com/2227-7390/12/7/1083  
+💡 Organization - https://github.com/Konkuk-fvlab
 
 
 ## 논문 요약
