@@ -30,5 +30,5 @@
  <img width="452" alt="image" src="https://github.com/user-attachments/assets/28b82068-120c-4064-95fa-b5687ebb1028">
 
 ## 실행 결과
-화면을 2분할 했을 때 왼쪽이 NeurOPA 모델의 세 가지 Attack Type(Score Attack, Distance Attack, Rapid Attack)에 따른 결과이다. 오른쪽은 Su 모델 또는 OPA2D 모델의 결과이다. 실행화면 상단의 Progress Bar에서 확인할 수 있듯이 왼쪽의 NeurOPA 모델의 실행 시간이 Su 모델 또는 OPA2D 모델과 비교했을 때 월등히 빠른 것을 가시적으로 알 수 있다. 이외에도 , Confidence Score 또는 Distance등 Attack 목적에 맞는 결과 값들이 기존의 모델인 Su 모델과 OPA2D 모델과 비교했을 때 성능이 뛰어남을 확인할 수 있다.![image](https://github.com/user-attachments/assets/569921c0-116d-4b1d-af4e-e39267b691d2)
+화면을 2분할 했을 때 왼쪽이 NeurOPA 모델의 세 가지 Attack Type(Score Attack, Distance Attack, Rapid Attack)에 따른 결과이다. 오른쪽은 Su 모델 또는 OPA2D 모델의 결과이다. 실행화면 상단의 Progress Bar에서 확인할 수 있듯이 왼쪽의 NeurOPA 모델의 실행 시간이 Su 모델 또는 OPA2D 모델과 비교했을 때 월등히 빠른 것을 가시적으로 알 수 있다. 이외에도 , Confidence Score 또는 Distance등 Attack 목적에 맞는 결과 값들이 기존의 모델인 Su 모델과 OPA2D 모델과 비교했을 때 성능이 뛰어남을 확인할 수 있다.
 
